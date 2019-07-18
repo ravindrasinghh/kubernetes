@@ -1,0 +1,6 @@
+*It will give u output(how many pods are running in your worker)
+kubectl get pods
+
+*It will give u output(how many nodes are running in your worker)
+
+kubectl get nodes
