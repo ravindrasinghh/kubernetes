@@ -4,3 +4,11 @@ kubectl get pods
 *It will give u output(how many nodes are running in your worker)
 
 kubectl get nodes
+
+*describe pods
+kubectl describe pods
+
+*describe wide informatoin of pod
+kubectl get pods -o wide
+
+
