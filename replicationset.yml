@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx
+  labels:
+    app: myapp-container
+    tier: nginx-container
+spec:
+  # modify replicas according to your case
+  replicas: 5
+  selector:
+    matchLabels:
+      tier: nginx-container
+  template:
+    metadata:
+      labels:
+        #optional to write  app in yml
+        #app: myapp-container
+        tier: nginx-container
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+
+COMMAND for replication Set
+1.kubectl create -f replicationset.yml 
+2.kubectl describe replicatset/nginx
+3.kubectl delete -f replicationset.yml
+4.kubectl get rs #list down all the replicatioset
+5.kubectl delete rs <name>  # Delete replication set <name>
+
+if you modify the replicas
+1.kubectl replace -f replicationset.yml #it will modify replica
+
