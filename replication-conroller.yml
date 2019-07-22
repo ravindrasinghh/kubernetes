@@ -26,3 +26,6 @@ COMMAND for replication Controller
 3.kubectl delete -f replication-controller.yml
 4.kubectl get rc #list down all the replication-controller
 5.kubectl delete rc <name>  # Delete replication controller <name>
+
+if you modify the replicas
+1.kubectl replace -f replication-controller.yml #it will modify replica
