@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    tier: nginx-container
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: nginx-container
+  template:
+    metadata:
+      labels:
+        tier: nginx-container
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+        ports:
+        - containerPort: 80
+        
+Commands to run deployment
+1.kubect create -f deployment.yml
+2.kubectl describe deployment nginx        
+        
