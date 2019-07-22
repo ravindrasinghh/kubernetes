@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx #this name will display in replica container
+  labels: 
+    name: myapp-container
+    tier: nginx-container
+spec:
+  replicas: 3
+  selector:
+    tier: nginx-container 
+  template:
+    metadata:
+      name: nginx
+      labels:
+        tier: nginx-container
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+    
+
+COMMAND for replication Controller
+1.kubectl create -f replication-controller.yml
+2.kubectl describe replicationcontroller/nginx
+3.kubectl delete -f replication-controller.yml
+4.kubectl get rc #list down all the replication-controller
+5.kubectl delete rc <name>  # Delete replication controller <name>
