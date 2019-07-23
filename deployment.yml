@@ -22,5 +22,7 @@ spec:
         
 Commands to run deployment
 1.kubect create -f deployment.yml
-2.kubectl describe deployment nginx        
-        
+2.kubectl describe deployment nginx    
+
+Update deployment
+1.kubectl set image deploy  nginx-deployment nginx-container=nginx:1.9.1        
