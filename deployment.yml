@@ -25,4 +25,4 @@ Commands to run deployment
 2.kubectl describe deployment nginx    
 
 Update deployment
-1.kubectl set image deploy  nginx-deployment nginx-container=nginx:1.9.1        
+1.kubectl set image deployment/nginx-deployment nginx-container=nginx:1.9.1        
