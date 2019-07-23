@@ -1,0 +1,12 @@
+1.kubectl create -f deployment.yml --record #to create deployment
+2.kubecctl rollout status deployment/deployment name
+
+
+#Now  change in the file
+1.kubectl apply -f deployment.yml#to apply new changes
+2.kubectl get rs #there will be two replicca set.
+ROLLBACK
+1.kubectl rollout status deployment/nginx-deployment #it will show the status.
+2.kubectl rollout history deployment/nginx-deployment #it will show the revision.
+3.kubectl rollout undo deployment/nginx-deployment --to-revision=4 #come to specific version
+4.kubectl describe deployment/nginx-deployment #it will describe about  all informaton of current deployment. 
