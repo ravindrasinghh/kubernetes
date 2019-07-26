@@ -1,0 +1,17 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: dev
+  labels:
+    app: myapp-container
+    tier: nginx-container
+spec:
+  containers:
+  - name: myapp-container
+    image: nginx
+   
+   
+# if we have not append namespace in file
+1.kubectl create -f pod.yml --namespace=dev( all resources will be in the dev)
