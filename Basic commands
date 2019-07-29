@@ -12,4 +12,7 @@ kubectl describe pods
 kubectl get pods -o wide
 kubectl describe pod <podname>
 
+*monitoring
+Kubectl top node
+kubectl top pod
 
