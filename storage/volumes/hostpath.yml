@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-name-generator
+spec:
+  containers:
+  - image: alpine 
+    name: alpine
+    command: ["/bin/sh","-c"]
+    args: ["shut -i 0-100 -n 1 >> /opt/number.out;"]
+
+
+  volumes:
+  - name:  data-volume
+    hostPath:
+      path: /data
