@@ -10,3 +10,5 @@ spec:
   - name: myapp-container
     image: nginx
     
+#to check the logs of pod
+kubectl logs -f podname
