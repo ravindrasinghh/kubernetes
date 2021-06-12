@@ -16,7 +16,11 @@ kubectl run nginx --image=nginx --restart=Never
 
 
 2. Create a Pod and Expose a Port
+
+
 kubectl run nginx --image=nginx --port=80 --restart=Never
 
 3. Output the Manifest File
+
+
 kubectl run nginx --image=nginx --port=80 --restart=Never --dry-run -o yaml
