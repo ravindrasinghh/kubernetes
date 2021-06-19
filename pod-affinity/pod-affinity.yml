@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-affinity
+spec:  
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - dev
+        topologyKey: kubernetes.io/hostname
+            
+  containers:
+  - name: pod-affinity
+    image: k8s.gcr.io/pause:2.0
+    
+   #It will create the pod in that hostname only where exisiting pod name having labels i.e app=dev
