@@ -24,5 +24,14 @@ Commands to run deployment
 1.kubect create -f deployment.yml
 2.kubectl describe deployment nginx    
 
-Update deployment
-1.kubectl set image deployment/nginx-deployment nginx-container=nginx:1.9.1        
+Update deployment with image
+1.kubectl set image deployment/nginx-deployment nginx-container=nginx:1.9.1    
+
+Rollout deployment history
+ kubectl rollout history deployment.apps/nginx-deployment
+
+describe revision
+kubectl rollout history deployment.apps/nginx-deployment --revision 2
+
+rollback to specific revision number
+kubectl rollout undo deployment/nginx-deployment --to-revision 1 
