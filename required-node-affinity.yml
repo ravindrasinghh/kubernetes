@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: NotIn
+            values:
+            - gke-labs-labs-k8s-labs-62199ce4-r3c8
+            
+  containers:
+  - name: with-node-affinity
+    image: k8s.gcr.io/pause:2.0
+
+
+    #It will create the pod in specific nodes if it matches the lables i.e node name
