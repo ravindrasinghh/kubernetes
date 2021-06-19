@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    tier: nginx-container
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: nginx-container
+  template:
+    metadata:
+      labels:
+        tier: nginx-container
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+        ports:
+        - containerPort: 80
+        
+        
+        
+        
+        
+        Command to taint the node
+        1.kubectl taint node <node_name> key=value:NoSchedule
+        Command to untaint the node
+        kubectl taint node <node_name> key=value:NoSchedule-
