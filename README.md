@@ -24,3 +24,26 @@ kubectl run nginx --image=nginx --port=80 --restart=Never
 
 
 kubectl run nginx --image=nginx --port=80 --restart=Never --dry-run -o yaml
+
+
+. Create a service - Exposing Pod
+
+
+
+kubectl expose pod nginx --name nginx-svc --port=80 --target-port=80
+
+
+
+2. Create a service - Expose Deployment
+
+
+
+kubectl expose deployment nginx --name nginx-dep-svc --port=80 --target-port=8000
+
+
+
+3. Create a NodePort Service
+
+
+
+kubectl expose deployment nginx --name nodeport-svc --port=80 --target-port=8000 --type=NodePort
