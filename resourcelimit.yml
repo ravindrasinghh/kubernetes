@@ -15,5 +15,5 @@ spec:
         cpu:    "0.5"    
         
         
- requestmeans : pod will get guranteeed specific memory and cpu 
- limit: It will not go beyond that limit
+ #requestmeans : pod will get guranteeed specific memory and cpu 
+ #limit: It will not go beyond that limit
