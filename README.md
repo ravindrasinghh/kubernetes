@@ -47,3 +47,65 @@ kubectl expose deployment nginx --name nginx-dep-svc --port=80 --target-port=800
 
 
 kubectl expose deployment nginx --name nodeport-svc --port=80 --target-port=8000 --type=NodePort
+
+
+
+
+Which namespace has the blue pod in it?
+kubectl get pods --all-namespaces | grep blue
+
+Create a service redis-service to expose the redis application within the cluster on port 6379.
+kubectl expose pod redis --type=ClusterIP --port=6379 --name=redis-service 
+
+
+Manually schedule the pod on node01.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  nodeName: node01
+  containers:
+  -  image: nginx
+     name: nginx
+
+
+
+We have deployed a number of PODs. They are labelled with tier, env and bu. How many PODs exist in the dev environment?  
+ kubectl get pods --selector env=dev --no-headers | wc -l   
+
+How many objects are in the prod environment including PODs, ReplicaSets and any other objects?
+kubectl get all --selector env=prod
+Identify the POD which is part of the prod environment, the finance BU and of frontend tier?
+kubectl get pods --selector env=prod,bu=finance,tier=frontend
+
+
+taint and tolerations
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: nginx
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/master
+                operator: Exists
