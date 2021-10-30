@@ -1,0 +1,22 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: ravindra
+  name: ravindra-deploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      run: ravindra
+  template:
+    metadata:
+      labels:
+        run: ravindra
+    spec:
+      containers:
+      - image: ravindrasingh6969/load
+        name: ravindra
+        ports:
+        -  containerPort: 80
