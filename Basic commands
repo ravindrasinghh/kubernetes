@@ -16,3 +16,16 @@ kubectl describe pod <podname>
 Kubectl top node
 kubectl top pod
 
+# for rolling
+sh ```
+kubectl rollout status deployment nginx-deploy
+kubectl rollout history deployment nginx-deploy
+kubectl set image deployment nginx-deploy nginx=nginx:1.15
+kubectl rollout history deployment nginx-deploy --revision 1
+
+kubectl rollout undo deployment nginx-deploy --to-revision=1
+
+metadata:
+    annotations:
+        kubernetes.io/change-cause: "updated latest work"
+```
