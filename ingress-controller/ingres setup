@@ -1,0 +1,27 @@
+    # Get the resource group name of the cluster 
+    az aks show --resource-group staging --name my-demo-cluster--query nodeResourceGroup -o tsv
+
+    # Replace Resource Group value
+    az network public-ip create --resource-group MC_aks-test --name myIngress --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
+
+    # Install Helm3
+    brew install helm
+
+    # Create a namespace for your ingress resources
+    kubectl create namespace ingress-basic
+    # Add the official stable repository
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm repo update
+
+    #  Customizing the Chart Before Installing. 
+    helm show values ingress-nginx/ingress-nginx
+
+
+    helm install ingress-nginx ingress-nginx/ingress-nginx \
+        --namespace ingress-basic \
+        --set controller.replicaCount=2 \
+        --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+        --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+        --set controller.service.externalTrafficPolicy=Local \
+        --set controller.service.loadBalancerIP="" 
