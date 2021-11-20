@@ -4,8 +4,6 @@
     # Replace Resource Group value
     az network public-ip create --resource-group MC_aks-test --name myIngress --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 
-    # Install Helm3
-    brew install helm
 
     # Create a namespace for your ingress resources
     kubectl create namespace ingress-basic
